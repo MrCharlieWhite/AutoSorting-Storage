@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+fullDatabase = []
+
 db_path = Path("AutoSortDatabase.JSON")
 if db_path.exists():
     with open('AutoSortDatabase.JSON', 'r') as jsonfile:
