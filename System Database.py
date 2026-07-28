@@ -1,10 +1,19 @@
 import json
+from pathlib import Path
 
+a = Path("AutoSortDatabase.JSON")
+if a.exists():
+    with open('AutoSortDatabase.JSON', 'r') as jsonfile:
+        fullDatabase = json.load(jsonfile)
+else:
+    fullDatabase = [
+        [{i: "" for i in range(5)} for _ in range(3)]
+        for _ in range(20)
+    ]
 # Iterating through all dimensions in the database array
-fullDatabase = [
-    [{i: "" for i in range(5)} for _ in range(3)]
-    for _ in range(20)
-]
+
+
+
 
 # Way to easily update data within the array via narrowing parameters down
 sector = int(input("Enter sector (0-19): "))
@@ -19,5 +28,5 @@ fullDatabase[sector][unit][module] = value
 print(fullDatabase[sector][unit])
 
 # Updating the JSON File
-with open("AutoSortDatabase.json", "w") as f:
+with open("AutoSortDatabase.JSON", "w") as f:
     json.dump(fullDatabase, f)
